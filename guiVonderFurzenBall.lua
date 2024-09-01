@@ -1,3 +1,6 @@
+-- This has not been tested on any other executors besides krampus (only tested in roblox studio)
+-- I cannot guarantee everything works (ex. custom font which i removed)
+-- Made by portal | example at bottom
 
 if isfile("menu_plex.font") then
 	delfile("menu_plex.font")
@@ -48,6 +51,7 @@ do
 	Library = {
 		Open = true;
 		Accent = Color3.fromRGB(255, 194, 41);
+        RiskColor = Color3.fromRGB(255,0,0);
 		Pages = {};
 		Sections = {};
 		Flags = {};
@@ -1776,7 +1780,7 @@ do
 			Title.Name = "Title"
 			Title.FontFace = realfont
 			Title.Text = Toggle.Name
-			Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+			Title.TextColor3 = Risk and Color3.fromRGB(255,0,0) or Color3.fromRGB(255, 255, 255)
 			Title.TextSize = Library.FSize
 			Title.TextStrokeTransparency = 0
 			Title.TextXAlignment = Enum.TextXAlignment.Left

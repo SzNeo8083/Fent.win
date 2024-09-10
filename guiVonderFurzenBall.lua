@@ -50,7 +50,7 @@ local Library = {};
 do
 	Library = {
 		Open = true;
-		Accent = Color3.fromRGB(255, 194, 41);
+		Accent = Color3.fromRGB(255, 41, 191);
         RiskColor = Color3.fromRGB(255,0,0);
 		Pages = {};
 		Sections = {};
@@ -1677,7 +1677,7 @@ do
 			-- // Returning
 			Section.Page.Sections[#Section.Page.Sections + 1] = Section;
 			Section.ActualSections[1]:Turn(true)
-			return table.unpack(Section.ActualSections)
+			return Section.ActualSections
 		end
 		--
 		function Sections:Toggle(Properties)
@@ -1757,7 +1757,11 @@ do
 
 			local ToggleAccent = Library:NewInstance("Frame", true)
 			ToggleAccent.Name = "ToggleAccent"
-			ToggleAccent.BackgroundColor3 = Library.Accent
+            if Toggle.Risk then
+                ToggleAccent.BackgroundColor3 = Library.RiskColor -- Red color
+            else
+                ToggleAccent.BackgroundColor3 = Library.Accent
+            end
 			ToggleAccent.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			ToggleAccent.BorderSizePixel = 0
 			ToggleAccent.Size = UDim2.new(1, 0, 1, 0)
@@ -1780,7 +1784,11 @@ do
 			Title.Name = "Title"
 			Title.FontFace = realfont
 			Title.Text = Toggle.Name
-			Title.TextColor3 = Risk and Color3.fromRGB(255,0,0) or Color3.fromRGB(255, 255, 255)
+			if Toggle.Risk then
+                Title.TextColor3 = Library.RiskColor -- Red color
+            else
+                Title.TextColor3 = Color3.new(1, 1, 1) -- White color
+            end
 			Title.TextSize = Library.FSize
 			Title.TextStrokeTransparency = 0
 			Title.TextXAlignment = Enum.TextXAlignment.Left
